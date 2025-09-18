@@ -44,5 +44,11 @@ LEFT JOIN city AS ci
 GROUP BY c.Name
 ORDER BY Average_pop DESC;    
 
-
-
+-- Most populated capital cities 
+SELECT c.Name, c.HeadOfState, ci.Name, ci.Population
+FROM country AS c
+LEFT JOIN city AS ci
+	ON c.Capital = ci.ID
+WHERE ci.Name IS NOT NULL AND ci.Population IS NOT NULL
+ORDER BY ci.Population DESC
+LIMIT 15;
